@@ -1,0 +1,36 @@
+[package]
+name = "spectrogram-yew"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew = { version = "0.20.0", features = ["csr"] }
+
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'AnalyserNode',
+  'AudioContext',
+  'AudioDestinationNode',
+  'AudioNode',
+  'AudioParam',
+  'GainNode',
+  'MediaStreamAudioSourceNode',
+  'MediaStream',
+  'MediaStreamAudioSourceOptions',
+  'OscillatorNode',
+  'OscillatorType',
+  'console',
+  'Document',
+  'Window',
+  'Element',
+]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
