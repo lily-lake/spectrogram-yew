@@ -5,7 +5,11 @@ use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use web_sys::{window, HtmlCanvasElement, WebGlRenderingContext as GL, WebGlRenderingContext};
 use yew::{html, Component, Context, Html, NodeRef};
+use crate::components::uitwo;
 use crate::components::ui;
+use gloo::console::log;
+use pollster::*;
+
 
 // Wrap gl in Rc (Arc for multi-threaded) so it can be injected into the render-loop closure.
 pub struct WebGPUContainer {
@@ -25,6 +29,16 @@ impl Component for WebGPUContainer {
     fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <canvas ref={self.node_ref.clone()} />
+        }
+    }
+    
+    fn rendered(&mut self, _ctx: &Context<Self>, first_render: bool) {
+        if first_render {
+            if let Some(canvas) = self.node_ref.cast::<HtmlCanvasElement>() {
+                // ui::run();
+                log!("created canvas element in rendered");
+                pollster::block_on(uitwo::run());
+            }
         }
     }
 }

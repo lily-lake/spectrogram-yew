@@ -2,6 +2,7 @@ mod components;
 use components::canvas_container::CanvasContainer;
 use components::webgpu_container::WebGPUContainer;
 // use components::ui;
+// use components::ui_2;
 use yew::prelude::*;
 // mod ui;
 
@@ -14,7 +15,7 @@ fn main() {
     // yew::Renderer::<HelloWorld>::new().render();
     // yew::Renderer::<CanvasContainer>::new().render();
     yew::Renderer::<WebGPUContainer>::new().render();
-    // ui::run();
+    // ui_2::run();
     // pollster::block_on(ui::run());
 
 }
