@@ -1,24 +1,20 @@
+mod components;
+use components::canvas_container::CanvasContainer;
+use components::webgpu_container::WebGPUContainer;
+// use components::ui;
 use yew::prelude::*;
+// mod ui;
 
 #[function_component]
-fn App() -> Html {
-    let counter = use_state(|| 0);
-    let onclick = {
-        let counter = counter.clone();
-        move |_| {
-            let value = *counter + 1;
-            counter.set(value);
-        }
-    };
-
-    html! {
-        <div>
-            <button {onclick}>{ "+1" }</button>
-            <p>{ *counter }</p>
-        </div>
-    }
+fn HelloWorld() -> Html {
+    html! { <div id="wasm-example"><div class="wasm-example"/></div> }
 }
 
 fn main() {
-    yew::Renderer::<App>::new().render();
+    // yew::Renderer::<HelloWorld>::new().render();
+    // yew::Renderer::<CanvasContainer>::new().render();
+    yew::Renderer::<WebGPUContainer>::new().render();
+    // ui::run();
+    // pollster::block_on(ui::run());
+
 }
