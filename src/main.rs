@@ -1,6 +1,6 @@
 mod components;
-use components::canvas_container::CanvasContainer;
-use components::webgpu_container::WebGPUContainer;
+// use components::canvas_container::CanvasContainer;
+use components::organisms::webgpu_container::WebGPUContainer;
 // use components::ui;
 // use components::ui_2;
 use yew::prelude::*;
