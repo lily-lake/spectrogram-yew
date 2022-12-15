@@ -1767,7 +1767,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('spectrogram-yew-31909017da3d1568_bg.wasm', import.meta.url);
+        input = new URL('spectrogram-yew-d425242d90afabb5_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
