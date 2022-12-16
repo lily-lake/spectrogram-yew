@@ -1,13 +1,13 @@
-use std::cell::RefCell;
-use std::rc::Rc;
+// use std::cell::RefCell;
+// use std::rc::Rc;
 
-use wasm_bindgen::prelude::*;
-use wasm_bindgen::JsCast;
-use web_sys::{window, Element, HtmlCanvasElement, WebGlRenderingContext as GL, WebGlRenderingContext};
+// use wasm_bindgen::prelude::*;
+// use wasm_bindgen::JsCast;
+// use web_sys::{window, Element, HtmlCanvasElement, WebGlRenderingContext as GL, WebGlRenderingContext};
 use yew::{html, Component, Context, Html, NodeRef};
 use crate::components::organisms::ui;
-use gloo::console::log;
-use pollster::*;
+// use gloo::console::log;
+use pollster;
 
 
 // Wrap gl in Rc (Arc for multi-threaded) so it can be injected into the render-loop closure.
@@ -33,10 +33,11 @@ impl Component for WebGPUContainer {
     
     fn rendered(&mut self, _ctx: &Context<Self>, first_render: bool) {
         if first_render {
-            if let Some(canvas) = self.node_ref.cast::<Element>() {
-                // ui::run();
-                pollster::block_on(ui::run());
-            }
+            pollster::block_on(ui::run());
+            // if let Some(canvas) = self.node_ref.cast::<Element>() {
+            //     // ui::run();
+            //     pollster::block_on(ui::run());
+            // }
         }
     }
 }
